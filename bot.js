@@ -1,5 +1,36 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const prefix = '.'
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
+  console.log('')
+  console.log('')
+  console.log('╔[═════════════════════════════════════════════════════════════════]╗')
+  console.log(`[Start] ${new Date()}`);
+  console.log('╚[═════════════════════════════════════════════════════════════════]╝')
+  console.log('')
+  console.log('╔[════════════════════════════════════]╗');
+  console.log(`Logged in as * [ " ${client.user.username} " ]`);
+  console.log('')
+  console.log('Informations :')
+  console.log('')
+  console.log(`servers! [ " ${client.guilds.size} " ]`);
+  console.log(`Users! [ " ${client.users.size} " ]`);
+  console.log(`channels! [ " ${client.channels.size} " ]`);
+  console.log('╚[════════════════════════════════════]╝')
+  console.log('')
+  console.log('╔[════════════]╗')
+  console.log(' Bot Is Online')
+  console.log('╚[════════════]╝')
+  console.log('')
+  console.log('')
+});
+
+
+
+
 const ytdl = require('ytdl-core');
 const request = require('request');
 const fs = require('fs');
@@ -8,7 +39,6 @@ const fetchVideoInfo = require('youtube-info');
 
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
 const prefix = '!';
-const discord_token = "Mjk0MDM5MjYxNTk3MDA3ODcy.Dg0Ckw.v8NVRJCe4Sdsi5B92mhocxNQ824";
 client.login(discord_token);
 client.on('ready', function() {
     console.log(`i am ready ${client.user.username}`);
@@ -120,7 +150,7 @@ client.on('message', function(message) {
         if (args > 100) return message.channel.send('1 - 100 || **__لا أكثر ولا أقل__**')
         if (args < 1) return message.channel.send('1 - 100 || **__لا أكثر ولا أقل__**')
         dispatcher.setVolume(1 * args / 50);
-        message.channel.sendMessage(`**__ ${dispatcher.volume*50}% مستوى الصوت __**`);
+        message.channel.sendMessage(`**__ ${dispatcher.volume*50}% مستوى الصوت __تم ي قلبي**`);
     }
     else if (mess.startsWith(prefix + 'وقف')) {
         if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
@@ -136,7 +166,7 @@ client.on('message', function(message) {
     }
     else if (mess.startsWith(prefix + 'وقف')) {
         if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
-        message.channel.send('`✔`');
+        message.channel.send('`تم يا عيني`');
         var server = server = servers[message.guild.id];
         if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
     }
@@ -284,3 +314,10 @@ For additional help,  `)
          message.channel.send({embed:embed});
                         }
                     });
+
+
+
+
+
+
+client.login(process.env.BOT_TOKEN);
