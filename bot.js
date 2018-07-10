@@ -296,3 +296,7 @@ client.on('message', (message)=>{
                 message.channel.send(message.content.split(" ").join(" ").slice(5));
         };
 })
+
+
+
+client.login(process.env.BOT_TOKEN);
