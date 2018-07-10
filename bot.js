@@ -29,6 +29,20 @@ client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
 });
 
 
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const ytdl = require('ytdl-core');
+const request = require('request');
+const fs = require('fs');
+const getYoutubeID = require('get-youtube-id');
+const fetchVideoInfo = require('youtube-info');
+
+const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
+const prefix = '!';
+const discord_token = "Mjk0MDM5MjYxNTk3MDA3ODcy.Dg0Ckw.v8NVRJCe4Sdsi5B92mhocxNQ824";
+client.login(discord_token);
+client.on('ready', function() {
+    console.log(`i am ready ${client.user.username}`);
 });
 /*
 ////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -286,6 +300,21 @@ For additional help,  `)
      })
     }
   });
+  client.on('message', message => {
+                                if(!message.channel.guild) return;
+                        if (message.content.startsWith('hping')) {
+                            if(!message.channel.guild) return;
+                            var msg = `${Date.now() - message.createdTimestamp}`
+                            var api = `${Math.round(client.ping)}`
+                            if (message.author.bot) return;
+                        let embed = new Discord.RichEmbed()
+                        .setAuthor(message.author.username,message.author.avatarURL)
+                        .setColor('RANDOM')
+                        .addField('**Time Taken:**',msg + " ms 📶 ")
+                        .addField('**WebSocket:**',api + " ms 📶 ")
+         message.channel.send({embed:embed});
+                        }
+                    });
 
 
 
