@@ -164,6 +164,7 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
         } else if (mess.startsWith(prefix + 'تعال')) {
                 if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
                 message.member.voiceChannel.join().then(message.channel.send(':ok:'));
+		return undefined;
 	} else if (command === `الحين`) {
 		if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
 		const embedNP = new Discord.RichEmbed()
