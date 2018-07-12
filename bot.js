@@ -84,7 +84,7 @@ client.on('message', async msg => { // eslint-disable-line
 //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 	if (command === `شغل`) {
 		const voiceChannel = msg.member.voiceChannel;
-		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
+		if (!voiceChannel) return msg.channel.send('يجب توآجدك بروم صوتي .');
 		const permissions = voiceChannel.permissionsFor(msg.client.user);
 		if (!permissions.has('CONNECT')) {
 			//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
@@ -116,7 +116,7 @@ client.on('message', async msg => { // eslint-disable-line
 					var videos = await youtube.searchVideos(searchString, 5);
 					let index = 0;
 					const embed1 = new Discord.RichEmbed()
-			        .setDescription(`**الرجآء من حضرتك إختيآر رقم المقطع** :
+			        .setDescription(`**الرجآء إختيآر رقم المقطع** :
 ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 					.setFooter("hi")
