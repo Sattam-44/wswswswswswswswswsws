@@ -297,6 +297,12 @@ client.on('message', (message)=>{
         };
 })
 
+client.on("message", message => {
+     if (message.content === `!تعال`) {
+        if (!message.member.voiceChannel) return message.reply('**Sorry,youre not on a voice channel**');
+        message.member.voiceChannel.join().then(message.react('✅'));
+    }
+});
 
 
 client.login(process.env.BOT_TOKEN);
