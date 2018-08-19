@@ -93,8 +93,7 @@ client.on('message', async msg => { // eslint-disable-line
 		if (!permissions.has('SPEAK')) {
 			return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
 		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-		
-		}
+	
 		if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
 			const playlist = await youtube.getPlaylist(url);
 			const videos = await playlist.getVideos();
