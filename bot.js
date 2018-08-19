@@ -4,7 +4,7 @@ const prefix = '!'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Test`,"http://twitch.tv/S-F")
+client.user.setGame(`RENAD`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -94,8 +94,8 @@ client.on('message', async msg => { // eslint-disable-line
 			return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
 		}//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 
-		if (('')) {
-			return msg.channel.sendMessage("**يجب توآفر برمشن `EMBED LINKS`لدي **")
+		if (!permissions.has('SPEAK')) {
+			return msg.channel.sendMessage("**يجب توآفر برمشن `SPEAK`لدي **")
 		}
 
 		if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
