@@ -49,7 +49,7 @@ client.on("ready", () => {
 
     while (!guild)
 
-        guild = client.guilds.get("320775849781755905");
+        guild = client.guilds.get("449997332952383508");
 
     guild.fetchInvites().then((data) => {
 
@@ -73,7 +73,7 @@ client.on("ready", () => {
 
 client.on("guildMemberAdd", (member) => {
 
-    let channel = member.guild.channels.get("348455939239837706");
+    let channel = member.guild.channels.get("449997332952383510");
 
     if (!channel) {
 
@@ -95,7 +95,7 @@ client.on("guildMemberAdd", (member) => {
 
     while (!guild)
 
-        guild = client.guilds.get("320775849781755905");
+        guild = client.guilds.get("449997332952383508");
 
     guild.fetchInvites().then((data) => {
 
