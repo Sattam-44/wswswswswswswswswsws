@@ -42,32 +42,26 @@ client.on('message', message => {
 
 
 
-
-client.on('message', message => {
-     if (message.author.bot) return;
-    if (message.content.startsWith("رابط")) {
-        message.channel.createInvite({
-        thing: true,
-        maxUses: 1,
-        maxAge: 3600,
-    }).then(invite =>
-      message.author.sendMessage(invite.url)
-    )
-    const embed = new Discord.RichEmbed()
-        .setColor("RANDOM")
-          .setDescription(" تم أرسال الرابط برسالة خاصة ")
-           .setAuthor(client.user.username, client.user.avatarURL)
-                 .setAuthor(client.user.username, client.user.avatarURL)
-                .setFooter('طلب بواسطة: ' + message.author.tag)
-
-      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
-              const Embed11 = new Discord.RichEmbed()
-        .setColor("RANDOM")
-     )
-    .setDescription(" مدة الرابط : ساعه  عدد استخدامات الرابط : 1 ")
-      message.author.sendEmbed(Embed11)
-    }
-});
+client.on("message", message => { //clear
+              var args = message.content.substring(prefix.length).split(" ");
+              if (message.content.startsWith(prefix + "clear")) {
+                  if(!message.channel.guild) return message.reply('**❌ اسف لكن هذا الامر للسيرفرات فقط **');         
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**⚠  لا يوجد لديك صلاحية لمسح الشات**');
+          var msg;
+          msg = parseInt();
+        
+        message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+        message.channel.sendMessage("", {embed: {
+          title: "``تــم مسح الشات ``",
+          color: 0x5016f3, 
+          footer: {
+            
+          }
+        }}).then(msg => {msg.delete(3000)});
+                            }
+  
+       
+  });
 
 
 
