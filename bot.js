@@ -49,7 +49,7 @@ client.on("ready", () => {
 
     while (!guild)
 
-        guild = client.guilds.get("اي دي سيرفرك - Server id");
+        guild = client.guilds.get("320775849781755905");
 
     guild.fetchInvites().then((data) => {
 
@@ -73,7 +73,7 @@ client.on("ready", () => {
 
 client.on("guildMemberAdd", (member) => {
 
-    let channel = member.guild.channels.get("اي دي الروم - Room id");
+    let channel = member.guild.channels.get("348455939239837706");
 
     if (!channel) {
 
