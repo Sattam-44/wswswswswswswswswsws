@@ -63,7 +63,7 @@ client.on('message', message => {
       message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
               const Embed11 = new Discord.RichEmbed()
         .setColor("RANDOM")
-        
+     )
     .setDescription(" مدة الرابط : ساعه  عدد استخدامات الرابط : 1 ")
       message.author.sendEmbed(Embed11)
     }
