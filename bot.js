@@ -67,16 +67,62 @@ client.on('error', console.error);
 client.on('ready', () => {console.log('Yo This Ready !'); client.user.setStatus('ide')});
 
 
-client.on('message', async message => {
-	if (message.author.bot) return;
-	if (!message.content.startsWith(prefix)) return;
-	var args = message.content.split(' ');
-	const serverQueue = queue.get(message.guild.id)
-	if (message.content.startsWith(`${prefix}play`)) {
-		const voiceChannel = message.member.voiceChannel;
-		if (!voiceChannel) return message.reply('You Need To Be In A Voice Channel To Do This Command');
-		const per = voiceChannel.permissionsFor(message.client.user);
-		var search = require('youtube-search');
+if (mess.startsWith(prefix + 'play')) {
+        if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
+        // if user is not insert the URL or song title
+        if (args.length == 0) {
+            let play_info = new Discord.RichEmbed()
+                .setAuthor(client.user.username, client.user.avatarURL)
+                .setFooter('طلب بواسطة: ' + message.author.tag)
+                .setDescription('**قم بإدراج رابط او اسم الأغنيه**')
+            message.channel.sendEmbed(play_info)
+            return;
+        }
+        if (queue.length > 0 || isPlaying) {
+            getID(args, function(id) {
+                add_to_queue(id);
+                fetchVideoInfo(id, function(err, videoInfo) {
+                    if (err) throw new Error(err);
+                    let play_info = new Discord.RichEmbed()
+                        .setAuthor(client.user.username, client.user.avatarURL)
+                        .addField('تمت إضافةالاغنيه بقائمة الإنتظار', `**
+                          ${videoInfo.title}
+                          **`)
+                        .setColor("#a637f9")
+                        .setFooter('|| ' + message.author.tag)
+                        .setThumbnail(videoInfo.thumbnailUrl)
+                    message.channel.sendEmbed(play_info);
+                    queueNames.push(videoInfo.title);
+                    now_playing.push(videoInfo.title);
+
+                });
+            });
+        }
+        else {
+
+            isPlaying = true;
+            getID(args, function(id) {
+                queue.push('placeholder');
+                playMusic(id, message);
+                fetchVideoInfo(id, function(err, videoInfo) {
+                    if (err) throw new Error(err);
+                    let play_info = new Discord.RichEmbed()
+                        .setAuthor(client.user.username, client.user.avatarURL)
+                        .addField('__**تم التشغيل ✅**__', `**${videoInfo.title}
+                              **`)
+                        .setColor("RANDOM")
+                        .addField(`بواسطه`, message.author.username)
+                        .setThumbnail(videoInfo.thumbnailUrl)
+
+                    // .setDescription('?')
+                    message.channel.sendEmbed(play_info)
+                    message.channel.send(`
+                            **${videoInfo.title}** تم تشغيل `)
+                    // client.user.setGame(videoInfo.title,'https://www.twitch.tv/Abdulmohsen');
+                });
+            });
+        }
+    }
  
 var opts = {
   maxResults: 1,
