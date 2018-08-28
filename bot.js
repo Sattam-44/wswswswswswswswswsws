@@ -36,7 +36,7 @@ client.user.setGame(`i Love you ❤ `,"http://twitch.tv/S-F")
 
 client.on('message', message => {
     if (message.content === '.') {
-    	message.reply('');
+    	message.reply('تعال نقط في قلبي');
   	}
 });
 
