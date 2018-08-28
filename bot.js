@@ -35,8 +35,8 @@ client.user.setGame(`i Love you ❤ `,"http://twitch.tv/S-F")
 
 
 client.on('message', message => {
-    if (message.content === 'ping') {
-    	message.reply('pong');
+    if (message.content === '.') {
+    	message.reply('@Delo.#5048 اه ');
   	}
 });
 
