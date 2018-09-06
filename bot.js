@@ -34,13 +34,6 @@ client.user.setGame(`i Love you ❤ `,"http://twitch.tv/S-F")
 
 
 
-client.on('message', message => {
-    if (message.content === '.') {
-    	message.reply('تعال نقط في قلبي');
-  	}
-});
-
-
 
 client.on('voiceStateUpdate', (old, now) => {
   const channel = client.channels.get('449997332952383512');
